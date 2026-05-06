@@ -67,6 +67,10 @@ This work is licensed under the **Creative Commons Attribution 4.0 International
 
 To attribute, include the citation block above or a short form: *Nguyen et al., 2026, Architecture for the Local Operation of Intelligence, https://github.com/constMONUMENT/Paper.*
 
+## Support
+
+If the framework helps you, a small contribution at the Sponsor button (top of repo) supports the next research cycle. The work is free to read and use regardless.
+
 ## A note on scope
 
 The framework is design research with one worked deployment as case study. It is not a claim of empirical validation across many operators. Other operators who install the framework will discover what carries across their contexts and what does not. The paper documents the architecture and the methodology so that finding out becomes a tractable next research question, not an act of guesswork.
