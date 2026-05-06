@@ -1,4 +1,4 @@
-# Framework Package: Bones-Only Distribution
+# Framework Package: Bones-Only Distribution "The Pioneer Kit"
 
 *A Distributable Implementation Template for AI Operating Doctrine*
 
