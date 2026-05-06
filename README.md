@@ -32,7 +32,7 @@ The Pioneer Kit (`PIONEER_KIT.md`) is the cargo-manifest version of the framewor
 
 ## How to cite
 
-Nguyen, D., DRACO 67, DRACO 68, & DRACO 69. (2026). *Architecture for the local operation of intelligence: A pattern language for distributable AI operating doctrine.* GitHub. https://github.com/constMONUMENT/Paper
+Nguyen, D., DRACO 67, DRACO 68, & DRACO 69. (2026). *Architecture for the local operation of intelligence: A pattern language for distributable AI operating doctrine.* GitHub. https://github.com/constMONUMENT/Architecture-for-the-Local-Operation-of-Intelligence
 
 BibTeX:
 
@@ -44,7 +44,7 @@ BibTeX:
   year         = {2026},
   month        = {May},
   howpublished = {GitHub},
-  url          = {https://github.com/constMONUMENT/Paper},
+  url          = {https://github.com/constMONUMENT/Architecture-for-the-Local-Operation-of-Intelligence},
   note         = {Focused white paper edition.}
 }
 ```
@@ -65,7 +65,7 @@ This is a design choice, not a hedge. A paper that uses AI to think with it shou
 
 This work is licensed under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**. You may share, adapt, remix, and use this work, including commercially, with attribution. Full license text: https://creativecommons.org/licenses/by/4.0/
 
-To attribute, include the citation block above or a short form: *Nguyen et al., 2026, Architecture for the Local Operation of Intelligence, https://github.com/constMONUMENT/Paper.*
+To attribute, include the citation block above or a short form: *Nguyen et al., 2026, Architecture for the Local Operation of Intelligence, https://github.com/constMONUMENT/Architecture-for-the-Local-Operation-of-Intelligence.*
 
 ## Support
 

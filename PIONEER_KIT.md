@@ -4,7 +4,7 @@
 
 **Companion to:** Nguyen, D., DRACO 67, DRACO 68, & DRACO 69. (2026). *Architecture for the local operation of intelligence: A pattern language for distributable AI operating doctrine.*
 
-**Repository:** https://github.com/constMONUMENT/Paper
+**Repository:** https://github.com/constMONUMENT/Architecture-for-the-Local-Operation-of-Intelligence
 
 **License:** Creative Commons Attribution 4.0 International (CC BY 4.0).
 
@@ -56,7 +56,7 @@ If you ship a deployment based on this package, cite the paper:
                   A Pattern Language for Distributable AI Operating Doctrine},
   year         = {2026},
   howpublished = {GitHub},
-  url          = {https://github.com/constMONUMENT/Paper}
+  url          = {https://github.com/constMONUMENT/Architecture-for-the-Local-Operation-of-Intelligence}
 }
 ```
 
@@ -882,7 +882,7 @@ The architecture's success is measured at the architecture, not at the interacti
 
 If you ship something built on this package, the citation is:
 
-Nguyen, D., DRACO 67, DRACO 68, & DRACO 69. (2026). *Architecture for the local operation of intelligence: A pattern language for distributable AI operating doctrine.* https://github.com/constMONUMENT/Paper
+Nguyen, D., DRACO 67, DRACO 68, & DRACO 69. (2026). *Architecture for the local operation of intelligence: A pattern language for distributable AI operating doctrine.* https://github.com/constMONUMENT/Architecture-for-the-Local-Operation-of-Intelligence
 
 License: CC BY 4.0.
 
