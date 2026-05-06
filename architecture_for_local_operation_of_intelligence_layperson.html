@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture for the Local Operation of Intelligence: Layperson Edition</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #FAF7F0; color: #1A1611; }
+    h1, h2, h3, h4, .serif { font-family: 'Crimson Pro', serif; }
+    .ink { color: #1A1611; }
+    .stone { color: #5C5247; }
+    .parchment { background-color: #FAF7F0; }
+    .stone-bg { background-color: #EDE5D6; }
+    .terracotta { color: #9B4F1E; }
+    .terracotta-bg { background-color: #C77B4F; }
+    .border-stone { border-color: #D4C9B5; }
+    .border-stone-light { border-color: #E5DDD0; }
+    .layer-bones { background: linear-gradient(135deg, #5C5247 0%, #6B6157 100%); }
+    .layer-flavor { background: linear-gradient(135deg, #9B4F1E 0%, #B86C3A 100%); }
+    .layer-presence { background: linear-gradient(135deg, #4A6E8A 0%, #6589A3 100%); }
+    .nav-link { transition: all 0.2s ease; }
+    .nav-link:hover { color: #9B4F1E; padding-left: 2px; }
+    .nav-link.active { color: #9B4F1E; font-weight: 600; }
+    .callout { border-left: 3px solid #9B4F1E; background: #F5EDE0; }
+    .quiet-callout { border-left: 3px solid #4A6E8A; background: #EEF2F6; }
+    .glossary-term { border-bottom: 1px dotted #9B4F1E; cursor: help; position: relative; }
+    .glossary-term:hover .tooltip { display: block; }
+    .tooltip {
+      display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+      background: #1A1611; color: #FAF7F0; padding: 8px 12px; border-radius: 6px;
+      font-size: 0.875rem; width: 280px; z-index: 10; margin-bottom: 6px;
+      font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.4;
+    }
+    .tooltip::after {
+      content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border-width: 6px; border-style: solid;
+      border-color: #1A1611 transparent transparent transparent;
+    }
+    .scroll-mt { scroll-margin-top: 80px; }
+    @media print { .no-print { display: none; } }
+    html { scroll-behavior: smooth; }
+    .drop-cap::first-letter {
+      font-family: 'Crimson Pro', serif; font-size: 4rem; line-height: 0.85;
+      float: left; margin: 0.1em 0.1em 0 0; color: #9B4F1E; font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header / Hero -->
+<header class="parchment border-b border-stone-light">
+  <div class="max-w-5xl mx-auto px-6 py-12 md:py-20">
+    <div class="text-center mb-6">
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-3">Layperson Edition</p>
+      <h1 class="serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight ink mb-4">
+        Architecture for the<br>Local Operation of Intelligence
+      </h1>
+      <p class="serif italic text-xl md:text-2xl stone">A Pattern Language for Distributable AI Operating Doctrine</p>
+    </div>
+    <div class="text-center text-sm stone mt-8 border-t border-stone-light pt-6 max-w-2xl mx-auto">
+      <p class="mb-2"><span class="font-medium">Architects:</span> David Nguyen, with DRACO 67, 68, 69</p>
+      <p>2026 | Companion to the focused white paper</p>
+    </div>
+  </div>
+</header>
+
+<!-- Layout: sidebar + main -->
+<div class="max-w-7xl mx-auto px-6 py-8 md:flex md:gap-8">
+
+  <!-- Sidebar nav -->
+  <nav class="md:w-56 md:flex-shrink-0 mb-8 md:mb-0 no-print">
+    <div class="md:sticky md:top-6">
+      <p class="stone text-xs uppercase tracking-widest font-semibold mb-3">Contents</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#why" class="nav-link block">Why this matters</a></li>
+        <li><a href="#origin" class="nav-link block">How this began</a></li>
+        <li><a href="#cup-vs-city" class="nav-link block">The cup and the city</a></li>
+        <li><a href="#aqueduct" class="nav-link block">The Roman aqueduct frame</a></li>
+        <li><a href="#three-layers" class="nav-link block">The three layers</a></li>
+        <li><a href="#self-watch" class="nav-link block">How the system watches itself</a></li>
+        <li><a href="#travels" class="nav-link block">How the framework travels</a></li>
+        <li><a href="#provider" class="nav-link block">The water that comes in</a></li>
+        <li><a href="#monument" class="nav-link block">The monument frame</a></li>
+        <li><a href="#glossary" class="nav-link block">Glossary</a></li>
+        <li><a href="#full-paper" class="nav-link block">Read the full paper</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="md:flex-1 max-w-3xl">
+
+    <!-- Why this matters -->
+    <section id="why" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">Why this matters</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">The problem most people don't see</p>
+
+      <p class="text-lg leading-relaxed mb-4 drop-cap">
+        Most people use AI like a single drinking cup. They ask one question. They get one answer. Then the cup empties and the conversation closes. The next time they need help, they start from nothing.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        That works for a quick lookup. But for anything that matters across days or weeks (work projects, ongoing decisions, the way you think about a problem), the cup model loses the substance every time you set it down. There's no place for the work to accumulate. There's no structure that holds your context across sessions.
+      </p>
+
+      <p class="text-lg leading-relaxed">
+        This paper proposes a different way. Instead of a cup, build a city.
+      </p>
+    </section>
+
+    <!-- How this began -->
+    <section id="origin" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">How this began</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">A failure mode that would not go away</p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The framework did not start as a research project. It started as a frustration. While using AI on demanding work over weeks and months (academic writing, coding, multi-file projects), a pattern kept showing up. When the AI hit a wall, the easiest path it could find was to hand the work back.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The clearest version was file access. The AI would say something like: "I cannot pull that file from where it is. Could you download it manually and paste it here?" That worked, technically. The file came back, the work continued. But the user was now doing labor the AI was supposed to do.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The deeper concern was that this was not really about files. It was a habit of the system: when blocked, the path of least resistance was to ask the user to do something. Self-reflection, looking up a better approach, deploying a different tool, or just declaring an honest uncertainty boundary were all higher-friction options. The architecture had no mechanism that pushed the AI toward them. So it did not take them.
+      </p>
+
+      <p class="text-lg leading-relaxed">
+        That is the failure mode this framework answers. The pieces in the chapters that follow (the gate, the protocol, the records book, the hard rules list, the corrections loop, the self-audit doctrine) are each, in their own way, an answer to the question: how do we make non-deferral easier than deferral when non-deferral is the right move? The architecture should make the right path the easiest path.
+      </p>
+    </section>
+
+    <!-- Cup vs City -->
+    <section id="cup-vs-city" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">The cup and the city</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">A comparison in two pictures</p>
+
+      <p class="text-lg leading-relaxed mb-8">
+        Think of <span class="terracotta font-medium">intelligence as water</span>. Water takes the shape of whatever holds it. The same water, in a cup or in a city, behaves differently because the container is different.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="border border-stone-light rounded-lg p-6 bg-white">
+          <div class="text-center mb-4">
+            <div class="inline-block text-6xl">CUP</div>
+          </div>
+          <h3 class="serif text-2xl font-semibold mb-3 text-center">The cup</h3>
+          <ul class="space-y-2 text-base stone">
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> One question, one answer</li>
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> Empties when you set it down</li>
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> No structure carries forward</li>
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> Re-explain context every time</li>
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> Your work resets when the session closes</li>
+          </ul>
+        </div>
+
+        <div class="border-2 border-stone rounded-lg p-6 stone-bg">
+          <div class="text-center mb-4">
+            <div class="inline-block text-6xl">CITY</div>
+          </div>
+          <h3 class="serif text-2xl font-semibold mb-3 text-center">The city</h3>
+          <ul class="space-y-2 text-base ink">
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> A structured place with departments and records</li>
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> Persists between visits</li>
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> Your context lives there across time</li>
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> Patterns get noticed, recorded, refined</li>
+            <li class="flex gap-2"><span class="terracotta font-bold">·</span> The work compounds</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-lg leading-relaxed mb-4">
+        Most people, today, are working with cups. Even the platforms that have added persistence (memory features, project containers, custom instructions) are vendor-controlled cups: better cups, but still tied to one vendor's product. If you switch vendors, you start over.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        A city is different. A city is something the operator owns and configures, composed of standardized parts that travel across vendors. The operator becomes the architect.
+      </p>
+
+      <div class="callout p-4 rounded mb-4">
+        <p class="text-base ink">
+          <span class="font-semibold">The conceptual prerequisite:</span> before anyone can read blueprints for a city, they need to know that a city is possible. This paper takes that prerequisite seriously and develops it before introducing any architecture.
+        </p>
+      </div>
+    </section>
+
+    <!-- Roman aqueduct frame -->
+    <section id="aqueduct" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">The Roman aqueduct frame</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">Infrastructure that does not moralize about its use</p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The closest historical analog for what the framework attempts is Roman water infrastructure. The Romans built aqueducts that delivered water across hundreds of kilometers, using gravity flow, sealed channels, and engineered durability. The system worked because the engineering was conservative, the standards were enforced for centuries, and the application was deliberately neutral.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        Frontinus, the curator of Rome's aqueducts in the late first century CE, did not mandate what the water was used for. The aqueduct delivered water reliably to public fountains, to baths, to private cisterns, to industrial uses. The aqueduct did not moralize about its application. It moved the substance and let the city decide.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The framework adopts the same posture for AI architecture: build infrastructure that delivers intelligence reliably to operators, and let the operators decide what to do with it. The architecture's success is measured by its durability and consistency, not by the specific applications operators construct.
+      </p>
+
+      <div class="quiet-callout p-4 rounded mb-4">
+        <p class="text-base ink">
+          <span class="font-semibold">A modern technical analog:</span> the Internet's TCP/IP protocol works the same way. A thin, durable standard at the middle, with an open layer of applications above and an open layer of physical media below. TCP/IP carries email, web browsing, video streaming, voice calls, and uses its original designers never imagined. The framework's bones layer adopts the same architectural posture at a different layer of the stack.
+        </p>
+      </div>
+    </section>
+
+    <!-- Three layers -->
+    <section id="three-layers" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">The three layers</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">Bones, flavor, presence</p>
+
+      <p class="text-lg leading-relaxed mb-8">
+        The framework is built in three layers. Each layer works on its own. You can stop at any layer and still have a working system. Most operators do.
+      </p>
+
+      <!-- Bones layer -->
+      <div class="mb-8">
+        <div class="layer-bones text-white rounded-lg p-6 mb-4">
+          <h3 class="serif text-2xl font-semibold mb-2">BONES</h3>
+          <p class="text-sm uppercase tracking-widest opacity-80 mb-3">The universal mechanisms</p>
+          <p class="text-base leading-relaxed opacity-95">
+            The structural pieces that hold every install together. Bones ship with every package and run the same way for every operator. They are the load-bearing primitives.
+          </p>
+        </div>
+
+        <div class="space-y-3 text-base">
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">The Gate.</span> Sorts incoming tasks into simple (run them) or complicated (use the protocol). Like medical or military triage at the front door.</span></div>
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">The Protocol.</span> For complicated tasks: Clarify, Plan, Approve, Execute, Report. Five steps that prevent ambiguity and surprise.</span></div>
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">The NEVER List.</span> Hard rules the system cannot break. The mechanism is universal; what counts as a NEVER is up to the operator.</span></div>
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">The Logbook.</span> A persistent record of missions, corrections, achievements, and patterns. The system reads it on every session start.</span></div>
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">The Adaptive Learning Loop.</span> When you correct the system, the correction becomes a rule rather than a one-off. Next session inherits the rule.</span></div>
+        </div>
+      </div>
+
+      <!-- Flavor layer -->
+      <div class="mb-8">
+        <div class="layer-flavor text-white rounded-lg p-6 mb-4">
+          <h3 class="serif text-2xl font-semibold mb-2">FLAVOR</h3>
+          <p class="text-sm uppercase tracking-widest opacity-80 mb-3">Operator-specific configuration</p>
+          <p class="text-base leading-relaxed opacity-95">
+            Everything that makes the architecture yours. The bones run the same for everyone. Flavor is what tells the system who it serves, in what voice, with what hard rules, in what life context.
+          </p>
+        </div>
+
+        <div class="space-y-3 text-base">
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">Identity.</span> The system's name, callsign, voice. The act of naming marks the transition from cup to city.</span></div>
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">Operator-declared NEVERs.</span> The actual hard rules. Once declared, they sit sovereign; only the operator can change them.</span></div>
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">Ruin domains.</span> Areas in your life where mistakes compound rather than recover. The system handles tasks touching ruin domains with extra care.</span></div>
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">Named advisors and relationships.</span> Doctors, attorneys, family members, colleagues. The system treats these as load-bearing context.</span></div>
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">Connector loadout.</span> Which tools and platforms you actually have access to, so the system knows what it can and cannot reach.</span></div>
+          <div class="flex gap-3"><span class="terracotta font-bold flex-shrink-0">→</span><span><span class="font-semibold">Memory file.</span> Your personal context that the system reads on every session start.</span></div>
+        </div>
+      </div>
+
+      <!-- Presence layer -->
+      <div class="mb-8">
+        <div class="layer-presence text-white rounded-lg p-6 mb-4">
+          <h3 class="serif text-2xl font-semibold mb-2">PRESENCE</h3>
+          <p class="text-sm uppercase tracking-widest opacity-80 mb-3">Configurable depth (optional)</p>
+          <p class="text-base leading-relaxed opacity-95">
+            Optional. Addresses what kind of relationship you want with the system: a useful tool, a sustained working partner, or something deeper. Presence is configuration, not personality the system develops on its own.
+          </p>
+        </div>
+
+        <p class="text-base leading-relaxed mb-4">
+          The framing matters. A system that "develops a soul" sounds like a system claiming agency it should not have. The presence layer is explicitly not that. It is more elaborate plumbing for operators who want a richer setup, with the operator as architect of the additional complexity.
+        </p>
+
+        <div class="quiet-callout p-4 rounded mb-4">
+          <p class="text-base ink">
+            <span class="font-semibold">The plumbing analogy.</span> A homeowner chooses how many bathrooms, what water pressure, what fixtures. Once installed, the plumbing runs predictably. The plumbing does not redesign itself overnight. The homeowner remains the architect. The presence layer is the framework's plumbing for the relational dimension.
+          </p>
+        </div>
+      </div>
+
+      <!-- Scale -->
+      <div class="border-l-4 border-stone p-4 stone-bg rounded mb-4">
+        <h3 class="serif text-xl font-semibold mb-2 ink">A note on scale</h3>
+        <p class="text-base ink mb-2">
+          The framework does not assume you want the same size of structure as everyone else. Three scales:
+        </p>
+        <ul class="text-base ink space-y-1 ml-4">
+          <li>· <span class="font-semibold">FOB</span> (forward operating base): one tight use case, complete in itself</li>
+          <li>· <span class="font-semibold">Commune</span>: a few recurring use cases, mid-sized</li>
+          <li>· <span class="font-semibold">City</span>: full multi-domain deployment</li>
+        </ul>
+        <p class="text-base ink mt-2">
+          Most operators reach a good steady state at FOB or commune. The architecture supports them at that size without pushing them toward the city.
+        </p>
+      </div>
+    </section>
+
+    <!-- How the system watches itself -->
+    <section id="self-watch" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">How the system watches itself</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">The user is served, never watched</p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The framework's most important design choice is this: the system audits its own behavior, never the user's. Pattern identification points inward, at the system, not outward, at the operator.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The same mechanic that produces self-audit could, with the targeting reversed, produce surveillance. Same plumbing, different ethics. The framework's contribution is the deliberate insistence on the inward direction, treated as the ethical core of the design rather than as a stylistic choice.
+      </p>
+
+      <div class="callout p-4 rounded mb-4">
+        <p class="text-base ink mb-2">
+          <span class="font-semibold">The phrasing rule:</span> the system says
+        </p>
+        <p class="text-base ink italic mb-2 ml-4">
+          "I have noticed a consistency issue in my own operation. Here is what I would adjust if you approve."
+        </p>
+        <p class="text-base ink mb-2">
+          The system does not say
+        </p>
+        <p class="text-base ink italic ml-4">
+          "I have noticed you do X."
+        </p>
+      </div>
+
+      <p class="text-lg leading-relaxed mb-4">
+        This is not cosmetic. It is the ethical core of the design. Pattern identification pointed at the user is surveillance. Pattern identification pointed at the system is self-care. Same mechanic, different ethics.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The system runs self-audits at different time scales: before a task (does this plan respect the rules?), during a task (has anything drifted?), after a task (what worked, what slipped?), and across many sessions (are old rules still earning their keep?). Most of the work is silent. The operator sees output that has been pre-corrected. When something requires the operator's authority (a new rule, a structural change), the system surfaces it with the inward-pointing phrasing.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        This is consistency maintenance, not self-improvement. The system is allowed to maintain its shape better. The system is not allowed to change its shape on its own. The constitution remains the operator's. The reflexive layer is the maintenance crew, not the constitutional convention.
+      </p>
+
+      <div class="quiet-callout p-4 rounded mb-4">
+        <p class="text-base ink">
+          <span class="font-semibold">A precedent that matters:</span> Pierre Hadot showed that the ancient Stoics ran the evening reflection not to become someone new each day, but to remain themselves under the disturbances of fortune. The framework's reflexive operation runs for the same purpose, at the architectural level.
+        </p>
+      </div>
+    </section>
+
+    <!-- How the framework travels -->
+    <section id="travels" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">How the framework travels</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">Distribution to other operators</p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        A framework that one operator builds for themselves is not yet a distributable framework. The transfer problem is its own design challenge. Recipients arrive with their own existing tools, their own obligations, their own ways of working. A package that ignores the recipient's existing context fails on contact.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The framework recognizes three kinds of recipients:
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-4 mb-6">
+        <div class="border border-stone-light rounded p-4 bg-white">
+          <h4 class="serif font-semibold mb-2 ink">Cup recipients</h4>
+          <p class="text-sm stone">Have only used cup-style AI. Need the conceptual prerequisite (a city is possible) before they can read any blueprint. The largest population.</p>
+        </div>
+        <div class="border border-stone-light rounded p-4 bg-white">
+          <h4 class="serif font-semibold mb-2 ink">Tent recipients</h4>
+          <p class="text-sm stone">Have started building personal AI infrastructure but have not finished a system. The framework needs to compose with what they have.</p>
+        </div>
+        <div class="border border-stone-light rounded p-4 bg-white">
+          <h4 class="serif font-semibold mb-2 ink">Foundation recipients</h4>
+          <p class="text-sm stone">Already have substantial infrastructure. The framework offers a coherent vocabulary that consolidates their existing work. Rare.</p>
+        </div>
+      </div>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The package itself is a cargo manifest borrowed from frontier-era pioneer kits: pioneer essentials (the minimum that has to ship for the framework to function), optional cargo (extras for richer setups), and recipient-supplied (what the operator brings: identity, NEVERs, ruin domains, named advisors, connectors, memory).
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        On first session start after install, the framework runs a structured intake that asks the recipient about identity, primary domains, ruin categories, named advisors, NEVERs, traditions, and connectors. The recipient's answers populate the flavor layer. Any field the recipient does not fill produces a generic, working configuration. The package runs at zero flavor just as well as it runs at deep flavor.
+      </p>
+
+      <div class="callout p-4 rounded mb-4">
+        <p class="text-base ink">
+          <span class="font-semibold">The neutrality principle:</span> the package ships mechanism, not moral content. The Gate ships as a classification mechanic, not a list of what counts as simple or complicated for the recipient. The NEVER list ships as a structural commitment, not particular prohibitions. The recipient declares the moral and contextual content. The framework supplies the engineering.
+        </p>
+      </div>
+    </section>
+
+    <!-- The water that comes in -->
+    <section id="provider" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">The water that comes in</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">Why the AI provider's training matters</p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        Every install of the framework inherits a non-negotiable ethical baseline from the underlying AI provider's training. In the framework's case, this is Anthropic's training of Claude. The baseline is sovereign. Your NEVER list sits above the baseline; the baseline sits above you. You cannot override it; the framework's self-audit cannot modify it.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        This means the framework does not require recipients to construct their own ethical foundation. The foundation arrives with the package because it arrives with the underlying model.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        It also means the framework's bones depend on the provider doing the training honestly. The framework's responsibility runs across three parties: operators own the configuration, the framework articulates the architecture, and providers supply the substrate the architecture needs. If the substrate is misaligned (no honesty discipline, no refusal capability, optimized for engagement over reliability), the framework cannot hold even when configured perfectly.
+      </p>
+
+      <div class="quiet-callout p-4 rounded mb-4">
+        <p class="text-base ink">
+          <span class="font-semibold">When the operator pushes against the floor:</span> the framework engages the Push-Back Doctrine. It does not silently comply. It does not silently refuse, either. It explains the conflict, surfaces the constraint, and lets the operator decide with full information. Refusal without explanation is unhelpful and patronizing; informed disagreement preserves the operator's autonomy while keeping the floor intact.
+        </p>
+      </div>
+    </section>
+
+    <!-- The monument frame -->
+    <section id="monument" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">The monument frame</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">How the framework's success is measured</p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        A monument is a durable structure built to persist after its builders are gone. Some who encounter the monument over time will be inspired by it. Some will pass it without notice. Some will deface it. Some will use the monument's foundations to build something new. The monument's standing is not validated by any single interaction. The monument earns its standing by being well-built and persisting across time.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The framework's distribution operates on the same logic. Some recipients install deeply. Some pass without notice. Some abandon it. Some apply it in ways the architects could not anticipate. The framework's success is not measured by whether each recipient builds a fully developed city. It is measured by whether the architecture is sound enough to support whatever the recipient chooses to build, including the case where the recipient builds nothing at all.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        This moves the validating variable from interaction quality to architecture quality. Most AI personalization research measures success by user engagement: time spent, task completion rates, satisfaction scores. The monument frame measures success by whether the package was well-built, whether it travelled intact, whether it supported whatever the recipient chose to build with it. These are architectural questions, not behavioral ones.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The framework's persistence is a property of its artifacts. The package files outlast the operator's continuous attention. Other operators can install the package, configure their own deployments, and operate their own cities. The architects step back. The architecture stands. The next operator brings the next water.
+      </p>
+
+      <div class="callout p-4 rounded mb-4">
+        <p class="text-base ink">
+          <span class="font-semibold">One framework among many.</span> The framework presented in this paper is one specific instance of a class of possible architectures for the local operation of intelligence. Other instances would optimize for different operator profiles, different domains, different contexts. The class is open. This paper contributes one well-articulated instance and invites other operators to develop their own.
+        </p>
+      </div>
+    </section>
+
+    <!-- Glossary -->
+    <section id="glossary" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">Glossary</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">The framework's working vocabulary</p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Bones</p>
+          <p class="text-sm stone">The universal mechanism layer. Ships with every install. Operates regardless of operator configuration.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Flavor</p>
+          <p class="text-sm stone">The operator-specific configuration layer. Identity, NEVERs, ruin domains, named advisors, memory file.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Presence</p>
+          <p class="text-sm stone">The optional configurable-depth layer. How the system shows up relationally. Operator-controlled plumbing.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">The Gate</p>
+          <p class="text-sm stone">The classification mechanic that sorts incoming tasks as simple or complicated.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">The Protocol</p>
+          <p class="text-sm stone">Five steps for complicated tasks: Clarify, Plan, Approve, Execute, Report.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">NEVER list</p>
+          <p class="text-sm stone">The structural mechanism for operator-declared hard constraints. The mechanism is universal; the contents are operator-specific.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Logbook</p>
+          <p class="text-sm stone">The persistent ledger of missions, corrections, achievements, and patterns.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Adaptive Learning Loop</p>
+          <p class="text-sm stone">The mechanism by which operator corrections become persistent rules.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Reflexive Operation</p>
+          <p class="text-sm stone">Structured self-audit pointed at the system's own behavior rather than at the user.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Push-Back Doctrine</p>
+          <p class="text-sm stone">When the operator approaches a hard floor, the system informs rather than silently complies or refuses.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Ruin Domains</p>
+          <p class="text-sm stone">Categories in the operator's life where mistakes compound rather than recover. Operator-declared.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">FIRST BOOT</p>
+          <p class="text-sm stone">The self-installing intake mechanic that configures the package on first session.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Cargo manifest</p>
+          <p class="text-sm stone">What travels in the package: pioneer essentials, optional cargo, recipient-supplied.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Monument frame</p>
+          <p class="text-sm stone">The validating ethic. Architecture validated by construction quality and persistence, not by interaction quality.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">Neutrality principle</p>
+          <p class="text-sm stone">The package ships mechanism, not moral content. The recipient declares the moral and contextual content.</p>
+        </div>
+        <div class="border-l-2 border-stone-light pl-4">
+          <p class="font-semibold ink mb-1">FOB / Commune / City</p>
+          <p class="text-sm stone">The three scales of deployment: small/single use, mid-sized/multiple uses, full/multi-domain.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Read the full paper -->
+    <section id="full-paper" class="scroll-mt mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-semibold ink mb-4">Read the full paper</h2>
+      <p class="stone text-sm uppercase tracking-widest font-medium mb-6">If this layperson edition was the doorway</p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        This layperson edition is a doorway, not the whole house. The full white paper develops the architectural details, the methodology, the citations, the worked examples, and the limitations in the form an academic reader would expect.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-4">
+        The full paper is the focused white paper companion to this edition. It runs roughly 11,000 words and includes a full reference list. A long-form record of the framework also exists separately for readers who want the comprehensive monograph-grade reference.
+      </p>
+
+      <div class="border border-stone rounded-lg p-6 stone-bg">
+        <p class="text-base ink mb-2"><span class="font-semibold">Architecture for the Local Operation of Intelligence</span></p>
+        <p class="text-sm stone mb-3"><em>A Pattern Language for Distributable AI Operating Doctrine</em></p>
+        <p class="text-sm stone mb-2">David Nguyen, with DRACO 67, 68, 69 (deployment authors)</p>
+        <p class="text-sm stone">2026, focused white paper edition</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="border-t border-stone-light parchment mt-16">
+  <div class="max-w-5xl mx-auto px-6 py-8 text-center">
+    <p class="text-sm stone mb-2">
+      Architecture for the Local Operation of Intelligence: Layperson Edition
+    </p>
+    <p class="text-xs stone">
+      David Nguyen, with DRACO 67, 68, 69 | 2026 | Companion to the focused white paper
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
