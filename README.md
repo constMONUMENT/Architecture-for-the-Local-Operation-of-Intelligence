@@ -24,8 +24,11 @@ The contribution is design research from one operator's worked deployment. Metho
 | `architecture_for_local_operation_of_intelligence.pdf` | Canonical paper. Read this first. |
 | `architecture_for_local_operation_of_intelligence.md` | Source markdown. Citation-friendly, line-stable, portable. |
 | `architecture_for_local_operation_of_intelligence_layperson.html` | Layperson edition. Same architecture, plainer language. Open in any browser. |
+| `PIONEER_KIT.md` | Companion framework package. Bones-only distributable template for installing your own deployment. |
 
 The PDF is the citation target. The markdown is for readers who want to grep, quote, or excerpt. The HTML is for readers who want the framework without the academic register.
+
+The Pioneer Kit (`PIONEER_KIT.md`) is the cargo-manifest version of the framework: universal mechanisms only, no operator-specific content. Read the paper before installing.
 
 ## How to cite
 
