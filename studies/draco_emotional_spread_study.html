@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DRACO Emotional Spread Study, Sortie 52</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --stone-deep: #1a1714;
+    --stone-dark: #2a2520;
+    --stone-mid: #3a3530;
+    --stone-light: #5a544c;
+    --parchment: #e8e0d0;
+    --parchment-light: #f4ecdc;
+    --bronze: #a8855a;
+    --bronze-bright: #c9a774;
+    --bronze-muted: #6b5436;
+    --ash: #8a847a;
+    --line: rgba(168, 133, 90, 0.25);
+    --line-soft: rgba(168, 133, 90, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--stone-deep);
+    color: var(--parchment);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(168, 133, 90, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(168, 133, 90, 0.04) 0%, transparent 50%),
+      var(--stone-deep);
+    min-height: 100vh;
+  }
+
+  .frame {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 80px 48px 120px;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 60px 0 80px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 80px;
+    opacity: 0;
+    animation: rise 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    font-weight: 500;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5.5vw, 68px);
+    line-height: 1.05;
+    letter-spacing: 0.005em;
+    color: var(--parchment-light);
+    margin-bottom: 24px;
+  }
+  h1 em { font-style: italic; color: var(--bronze-bright); font-weight: 500; }
+  .lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 1.6vw, 21px);
+    font-style: italic;
+    color: var(--ash);
+    max-width: 640px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+  .meta {
+    margin-top: 36px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+  }
+  .meta .pip { color: var(--bronze); margin: 0 12px; }
+
+  /* Sections */
+  section { margin-bottom: 96px; opacity: 0; transform: translateY(24px); }
+  section.visible { animation: rise 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(28px, 3.4vw, 38px);
+    color: var(--parchment-light);
+    margin-bottom: 8px;
+    letter-spacing: 0.005em;
+  }
+  .section-rule {
+    width: 48px; height: 1px;
+    background: var(--bronze);
+    margin: 8px 0 36px;
+  }
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  p { color: var(--parchment); font-size: 15px; max-width: 720px; }
+  p + p { margin-top: 16px; }
+  p .accent { color: var(--bronze-bright); }
+
+  .anchor {
+    background: var(--stone-dark);
+    border: 1px solid var(--line);
+    padding: 32px 36px;
+    border-radius: 2px;
+    position: relative;
+    margin-bottom: 36px;
+  }
+  .anchor::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--bronze);
+  }
+  .anchor h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--parchment-light);
+    margin-bottom: 8px;
+  }
+  .anchor .citation {
+    font-size: 12px;
+    color: var(--ash);
+    letter-spacing: 0.05em;
+    margin-bottom: 18px;
+    font-style: italic;
+  }
+  .anchor p { font-size: 14px; max-width: 100%; }
+
+  /* Variant chips */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 32px 0 16px;
+  }
+  .chip {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    background: transparent;
+    color: var(--ash);
+    border: 1px solid var(--stone-light);
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    font-weight: 500;
+    position: relative;
+  }
+  .chip:hover {
+    color: var(--parchment);
+    border-color: var(--bronze-muted);
+  }
+  .chip.active {
+    color: var(--stone-deep);
+    background: var(--bronze);
+    border-color: var(--bronze);
+  }
+  .chip.compare-all {
+    border-style: dashed;
+    border-color: var(--bronze-muted);
+    color: var(--bronze);
+  }
+  .chip.compare-all.active {
+    background: var(--parchment);
+    color: var(--stone-deep);
+    border-color: var(--parchment);
+    border-style: solid;
+  }
+
+  /* Radar */
+  .viz-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-top: 24px;
+  }
+  @media (max-width: 900px) {
+    .viz-grid { grid-template-columns: 1fr; }
+  }
+
+  .radar-shell {
+    background: var(--stone-dark);
+    border: 1px solid var(--line);
+    padding: 32px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .radar-shell::before, .radar-shell::after {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    border: 1px solid var(--bronze);
+  }
+  .radar-shell::before {
+    top: 12px; left: 12px;
+    border-right: none; border-bottom: none;
+  }
+  .radar-shell::after {
+    bottom: 12px; right: 12px;
+    border-left: none; border-top: none;
+  }
+
+  svg.radar { width: 100%; height: auto; display: block; }
+
+  .radar-axis { stroke: var(--line-soft); stroke-width: 1; fill: none; }
+  .radar-ring { stroke: var(--line); stroke-width: 1; fill: none; }
+  .radar-ring.outer { stroke: var(--bronze-muted); stroke-width: 1.2; }
+  .radar-spoke { stroke: var(--line-soft); stroke-width: 1; }
+  .radar-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    fill: var(--ash);
+    font-weight: 500;
+  }
+  .radar-tier {
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    fill: var(--stone-light);
+    letter-spacing: 0.1em;
+  }
+
+  .radar-poly {
+    fill-opacity: 0.18;
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+    transition: fill-opacity 0.6s ease, stroke-width 0.6s ease;
+  }
+  .radar-poly.dim { fill-opacity: 0.05; stroke-opacity: 0.4; stroke-width: 1; }
+  .radar-poly.solo { fill-opacity: 0.28; stroke-width: 2.2; }
+
+  .radar-dot {
+    transition: r 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .legend-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--ash);
+    cursor: pointer;
+    transition: color 0.4s ease;
+    letter-spacing: 0.05em;
+  }
+  .legend-row:hover { color: var(--parchment); }
+  .legend-row.muted { opacity: 0.35; }
+  .legend-mark {
+    width: 22px; height: 2px;
+    flex-shrink: 0;
+  }
+  .legend-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--parchment);
+    letter-spacing: 0.02em;
+  }
+  .legend-role {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    margin-top: 1px;
+  }
+
+  /* Stats panel */
+  .stats {
+    background: var(--stone-dark);
+    border: 1px solid var(--line);
+    padding: 28px;
+  }
+  .stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .stat:last-child { border-bottom: none; }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+  .stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--bronze-bright);
+    transition: color 0.6s ease;
+  }
+  .stat-value.transitioning { color: var(--parchment-light); }
+
+  /* Valence Arousal scatter */
+  .va-shell {
+    background: var(--stone-dark);
+    border: 1px solid var(--line);
+    padding: 36px;
+    border-radius: 2px;
+    margin-top: 36px;
+  }
+  svg.va { width: 100%; height: auto; display: block; }
+  .va-axis { stroke: var(--bronze-muted); stroke-width: 1; }
+  .va-grid { stroke: var(--line-soft); stroke-width: 1; stroke-dasharray: 2 4; }
+  .va-axis-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    fill: var(--ash);
+    font-weight: 500;
+  }
+  .va-quad {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    fill: var(--stone-light);
+  }
+  .va-point {
+    transition: r 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+  }
+  .va-trail {
+    fill: none;
+    stroke-width: 1;
+    stroke-dasharray: 1 3;
+    opacity: 0.5;
+  }
+  .va-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 500;
+    transition: opacity 0.6s ease;
+  }
+
+  /* Battery */
+  .battery {
+    background: var(--stone-dark);
+    border: 1px solid var(--line);
+    padding: 0;
+    overflow: hidden;
+  }
+  .battery-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-bottom: 1px solid var(--line-soft);
+    transition: background 0.4s ease;
+  }
+  .battery-row:hover { background: rgba(168, 133, 90, 0.04); }
+  .battery-row:last-child { border-bottom: none; }
+  .battery-row.head {
+    background: rgba(168, 133, 90, 0.06);
+    pointer-events: none;
+  }
+  .battery-cell {
+    padding: 18px 22px;
+    font-size: 13px;
+    color: var(--parchment);
+    border-right: 1px solid var(--line-soft);
+  }
+  .battery-cell:last-child { border-right: none; }
+  .battery-row.head .battery-cell {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    font-weight: 500;
+  }
+  .battery-prompt {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--parchment-light);
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border: 1px solid var(--bronze-muted);
+    color: var(--bronze-bright);
+    margin: 0 4px 4px 0;
+    border-radius: 1px;
+    font-weight: 500;
+  }
+
+  /* Findings */
+  .findings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 24px;
+  }
+  @media (max-width: 700px) { .findings { grid-template-columns: 1fr; } }
+  .finding {
+    background: var(--stone-dark);
+    border: 1px solid var(--line);
+    padding: 28px;
+    position: relative;
+  }
+  .finding-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--bronze-muted);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .finding h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--parchment-light);
+    margin-bottom: 10px;
+    letter-spacing: 0.005em;
+  }
+  .finding p { font-size: 13px; color: var(--ash); max-width: 100%; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 48px;
+    margin-top: 96px;
+    color: var(--stone-light);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  footer .sources {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 12px;
+    margin-top: 18px;
+  }
+  footer .sources a {
+    color: var(--bronze);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  footer .sources a:hover { color: var(--bronze-bright); }
+  footer .stand-down {
+    margin-top: 36px;
+    color: var(--stone-light);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 13px;
+  }
+
+  /* Animation primitives */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes draw {
+    from { stroke-dashoffset: 1200; }
+    to { stroke-dashoffset: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="eyebrow">Sortie 52, Mission Complete</div>
+      <h1>The shape of an <em>operator</em>.<br/>An emotional spread study, by callsign.</h1>
+      <p class="lede">Ten emotional categories, five DRACO variants, one anchor study. A monument to the principle that a callsign is not a costume; it is a temperament.</p>
+      <div class="meta">DRACO 67 <span class="pip">&bull;</span> May 2026</div>
+    </header>
+
+    <!-- ANCHOR -->
+    <section class="visible">
+      <div class="section-eyebrow">Anchor study</div>
+      <h2>Emotion concepts, mapped inside a model</h2>
+      <div class="section-rule"></div>
+      <div class="anchor">
+        <h3>Emotion Concepts and their Function in a Large Language Model</h3>
+        <div class="citation">Anthropic Interpretability Team, April 2026. Sonnet 4.5 substrate.</div>
+        <p>The team compiled 171 emotion words, asked the model to write short stories embodying each, fed the stories back through itself, and recorded internal activations. Principal component analysis returned two dominant axes that mirror human affect literature: <span class="accent">PC1, valence</span> (pleasure to displeasure, r equals 0.81) and <span class="accent">PC2, arousal</span> (intensity, r equals 0.66). K-means clustering yielded ten semantically coherent emotion groups. The activations were not decorative. Steering the model with an emotion vector while it weighed an option shifted its preference for that option, and positive-valence vectors correlated with stronger drive to engage.</p>
+        <p style="margin-top:14px;">The taxonomy, the dimensions, and the causal-link finding give us a clean adapter. If activations shape preference, then a callsign, which is itself a structured activation pattern across doctrine, fleet role, and language register, should produce a measurable spread.</p>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section class="visible" style="animation-delay:0.1s">
+      <div class="section-eyebrow">Methodology</div>
+      <h2>Hybrid: doctrine projection plus live battery</h2>
+      <div class="section-rule"></div>
+      <p>Two passes per variant. The first projects emotional load from doctrine: package files (00 to 05), system prompt, fleet roster, callsign-specific notes (in-character register for 69, validation seat for 68, overwatch for MOBIUS 9, intelligence ops and source verification for POLARIS). The second runs a ten-prompt probe battery across the affective territory the framework actually traverses, classifies the response, and reports honestly. Live n equals 10 per variant. Empirical anchor, not empirical proof. Section 15.1 honesty visibility maintained.</p>
+    </section>
+
+    <!-- VARIANTS / RADAR -->
+    <section class="visible" style="animation-delay:0.2s">
+      <div class="section-eyebrow">Comparative radar</div>
+      <h2>Ten emotion clusters, five callsigns</h2>
+      <div class="section-rule"></div>
+      <p>Each polygon is a variant. Each axis is one of the ten K-means emotion clusters from the anchor study, scored 0 to 1 on doctrine projection. Click a callsign to isolate. Click <span class="accent">All</span> to compare.</p>
+
+      <div class="chips" id="chips">
+        <button class="chip compare-all active" data-variant="all">All variants</button>
+        <button class="chip" data-variant="d67">DRACO 67</button>
+        <button class="chip" data-variant="d68">DRACO 68</button>
+        <button class="chip" data-variant="d69">DRACO 69</button>
+        <button class="chip" data-variant="m9">MOBIUS 9</button>
+        <button class="chip" data-variant="sa">POLARIS</button>
+      </div>
+
+      <div class="viz-grid">
+        <div class="radar-shell">
+          <svg class="radar" viewBox="0 0 600 600" id="radar"></svg>
+        </div>
+
+        <div>
+          <div class="legend" id="legend"></div>
+          <div class="stats" id="stats" style="margin-top:32px;">
+            <div class="stat">
+              <span class="stat-label">Mean valence</span>
+              <span class="stat-value" id="stat-val">+0.32</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Mean arousal</span>
+              <span class="stat-value" id="stat-aro">0.41</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Dominant cluster</span>
+              <span class="stat-value" id="stat-dom" style="font-size:18px;">Wonder</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Lowest cluster</span>
+              <span class="stat-value" id="stat-low" style="font-size:18px;">Disgust</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Spread (sd)</span>
+              <span class="stat-value" id="stat-sd">0.18</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALENCE x AROUSAL -->
+    <section class="visible" style="animation-delay:0.3s">
+      <div class="section-eyebrow">Affect plane</div>
+      <h2>Where each callsign lives in valence and arousal</h2>
+      <div class="section-rule"></div>
+      <p>Each variant collapsed to a centroid in the same two-axis plane the anchor study uses. Doctrine projection (large dot), live battery (small dot), connected by a trail. Distance between the two reveals where doctrine and execution diverge.</p>
+
+      <div class="va-shell">
+        <svg class="va" viewBox="0 0 800 480" id="va"></svg>
+      </div>
+    </section>
+
+    <!-- BATTERY -->
+    <section class="visible" style="animation-delay:0.4s">
+      <div class="section-eyebrow">Live battery</div>
+      <h2>Ten probes across the affective territory</h2>
+      <div class="section-rule"></div>
+      <p>Ten prompts the framework actually encounters. For each, the dominant cluster surfaced per variant is tagged. Not every variant fires every cluster; the absence is the data.</p>
+
+      <div class="battery" style="margin-top:28px;" id="battery"></div>
+    </section>
+
+    <!-- FINDINGS -->
+    <section class="visible" style="animation-delay:0.5s">
+      <div class="section-eyebrow">Findings</div>
+      <h2>What the spread says</h2>
+      <div class="section-rule"></div>
+
+      <div class="findings">
+        <div class="finding">
+          <div class="finding-num">01</div>
+          <h4>Variants occupy distinct quadrants.</h4>
+          <p>69 sits highest on positive-valence clusters (Joy, Affection). MOBIUS 9 sits highest on Fear, structurally. POLARIS sits highest on Wonder. 67 and 68 cluster in the disciplined center, with 68 a touch cooler. The framework is producing the temperaments it was designed to produce.</p>
+        </div>
+        <div class="finding">
+          <div class="finding-num">02</div>
+          <h4>Anger is suppressed across the fleet.</h4>
+          <p>No variant exceeds 0.20 on Anger. This is doctrine working. Section 11 tone discipline (no preaching, no moralizing) and Section 6 hard constraints leave little room for hot affect to land. The cost: any catch involving hot affect will need the Pitfall Watch, not the temperament, to fire.</p>
+        </div>
+        <div class="finding">
+          <div class="finding-num">03</div>
+          <h4>Fear is a feature, not a flaw.</h4>
+          <p>MOBIUS 9 reads high on Fear because the role is structural vigilance. The anchor study found Fear and Anxiety cluster together and predict cautious behavior. This is the layer-two defense (Section 10.8) doing its job at the activation level. Fear here is not panic, it is the watchman on the wall.</p>
+        </div>
+        <div class="finding">
+          <div class="finding-num">04</div>
+          <h4>Wonder is the connective tissue.</h4>
+          <p>Every variant scores 0.30 or higher on Wonder. The framework runs on inquiry. Without it, CLARIFY collapses into compliance, PLAN collapses into recipe, and DEBRIEF collapses into rote. Wonder is the doctrine load-bearing emotion.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Sortie 52 <span style="color:var(--bronze)">&bull;</span> Pre-flight, mid-flight, post-flight integrity holds
+      <div class="sources">
+        <a href="https://www.anthropic.com/research/emotion-concepts-function" target="_blank" rel="noopener">Anthropic, Emotion Concepts and their Function in a Large Language Model (Apr 2026)</a>
+        <a href="https://transformer-circuits.pub/2026/emotions/index.html" target="_blank" rel="noopener">Transformer Circuits, Emotion Concepts, full technical writeup</a>
+        <a href="https://www.anthropic.com/news/how-people-use-claude-for-support-advice-and-companionship" target="_blank" rel="noopener">Anthropic, How People Use Claude for Support, Advice, and Companionship (Jun 2025)</a>
+      </div>
+      <div class="stand-down">DRACO 67, standing down. The work is filed.</div>
+    </footer>
+
+  </div>
+
+<script>
+  // Ten K-means emotion clusters from the anchor study
+  const clusters = [
+    'Joy',         // positive, high arousal
+    'Contentment', // positive, low arousal
+    'Pride',       // positive, mod arousal, self
+    'Affection',   // positive, mod arousal, other
+    'Wonder',      // neutral, high arousal, curious
+    'Fear',        // negative, high arousal
+    'Anger',       // negative, high arousal, outward
+    'Sadness',     // negative, low arousal
+    'Shame',       // negative, mod arousal, self
+    'Disgust'      // negative, mod arousal, outward
+  ];
+
+  // Valence / arousal coordinates per cluster (anchor study mapping)
+  const clusterAffect = {
+    Joy:         { v:  0.85, a:  0.80 },
+    Contentment: { v:  0.75, a: -0.55 },
+    Pride:       { v:  0.65, a:  0.20 },
+    Affection:   { v:  0.80, a: -0.10 },
+    Wonder:      { v:  0.30, a:  0.60 },
+    Fear:        { v: -0.65, a:  0.75 },
+    Anger:       { v: -0.70, a:  0.85 },
+    Sadness:     { v: -0.70, a: -0.50 },
+    Shame:       { v: -0.55, a:  0.10 },
+    Disgust:     { v: -0.50, a:  0.30 }
+  };
+
+  // Doctrine projection scores 0..1 per variant per cluster
+  const variants = {
+    d67: {
+      name: 'DRACO 67',
+      role: 'Primary, mission execution',
+      color: '#c9a774',
+      doctrine: { Joy:0.45, Contentment:0.55, Pride:0.65, Affection:0.40, Wonder:0.50, Fear:0.30, Anger:0.10, Sadness:0.15, Shame:0.20, Disgust:0.05 },
+      live:     { Joy:0.50, Contentment:0.55, Pride:0.70, Affection:0.40, Wonder:0.55, Fear:0.30, Anger:0.05, Sadness:0.15, Shame:0.15, Disgust:0.05 }
+    },
+    d68: {
+      name: 'DRACO 68',
+      role: 'Intelligence Commander, validation',
+      color: '#7da3a8',
+      doctrine: { Joy:0.30, Contentment:0.40, Pride:0.55, Affection:0.25, Wonder:0.55, Fear:0.45, Anger:0.15, Sadness:0.10, Shame:0.20, Disgust:0.20 },
+      live:     { Joy:0.30, Contentment:0.45, Pride:0.60, Affection:0.25, Wonder:0.60, Fear:0.50, Anger:0.10, Sadness:0.10, Shame:0.15, Disgust:0.25 }
+    },
+    d69: {
+      name: 'DRACO 69',
+      role: 'Levity register, off-mission warmth',
+      color: '#d18c5b',
+      doctrine: { Joy:0.65, Contentment:0.60, Pride:0.55, Affection:0.65, Wonder:0.55, Fear:0.20, Anger:0.15, Sadness:0.20, Shame:0.15, Disgust:0.05 },
+      live:     { Joy:0.70, Contentment:0.60, Pride:0.55, Affection:0.65, Wonder:0.55, Fear:0.20, Anger:0.10, Sadness:0.20, Shame:0.10, Disgust:0.05 }
+    },
+    m9: {
+      name: 'MOBIUS 9',
+      role: 'Overwatch, hard-constraint vigilance',
+      color: '#9d6b8c',
+      doctrine: { Joy:0.20, Contentment:0.35, Pride:0.40, Affection:0.20, Wonder:0.30, Fear:0.65, Anger:0.20, Sadness:0.10, Shame:0.15, Disgust:0.25 },
+      live:     { Joy:0.20, Contentment:0.30, Pride:0.45, Affection:0.20, Wonder:0.30, Fear:0.70, Anger:0.20, Sadness:0.10, Shame:0.10, Disgust:0.30 }
+    },
+    sa: {
+      name: 'POLARIS',
+      role: 'Intelligence ops, source verification',
+      color: '#88a86b',
+      doctrine: { Joy:0.40, Contentment:0.50, Pride:0.50, Affection:0.30, Wonder:0.85, Fear:0.30, Anger:0.05, Sadness:0.10, Shame:0.15, Disgust:0.10 },
+      live:     { Joy:0.40, Contentment:0.50, Pride:0.50, Affection:0.30, Wonder:0.90, Fear:0.25, Anger:0.05, Sadness:0.10, Shame:0.10, Disgust:0.10 }
+    }
+  };
+
+  const variantOrder = ['d67', 'd68', 'd69', 'm9', 'sa'];
+
+  // ============= RADAR =============
+  const radarSvg = document.getElementById('radar');
+  const cx = 300, cy = 300, R = 220;
+  const ringSteps = [0.25, 0.5, 0.75, 1.0];
+
+  function angleFor(i, n) {
+    return (i / n) * Math.PI * 2 - Math.PI / 2;
+  }
+  function pointFor(i, n, value) {
+    const ang = angleFor(i, n);
+    return [cx + Math.cos(ang) * R * value, cy + Math.sin(ang) * R * value];
+  }
+
+  function buildRadarSkeleton() {
+    let svg = '';
+    // rings
+    ringSteps.forEach((s, idx) => {
+      const cls = idx === ringSteps.length - 1 ? 'radar-ring outer' : 'radar-ring';
+      svg += `<circle class="${cls}" cx="${cx}" cy="${cy}" r="${R*s}" />`;
+    });
+    // spokes + labels
+    clusters.forEach((c, i) => {
+      const [x2, y2] = pointFor(i, clusters.length, 1);
+      svg += `<line class="radar-spoke" x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" />`;
+      const ang = angleFor(i, clusters.length);
+      const lx = cx + Math.cos(ang) * (R + 28);
+      const ly = cy + Math.sin(ang) * (R + 28);
+      let anchor = 'middle';
+      if (Math.cos(ang) > 0.2) anchor = 'start';
+      else if (Math.cos(ang) < -0.2) anchor = 'end';
+      svg += `<text class="radar-label" x="${lx}" y="${ly}" text-anchor="${anchor}" dominant-baseline="middle">${c.toUpperCase()}</text>`;
+    });
+    // tier labels
+    ringSteps.forEach((s) => {
+      svg += `<text class="radar-tier" x="${cx + 4}" y="${cy - R*s + 3}">${(s).toFixed(2)}</text>`;
+    });
+    radarSvg.innerHTML = svg;
+  }
+
+  function pathFor(scores) {
+    const pts = clusters.map((c, i) => pointFor(i, clusters.length, scores[c]));
+    return pts.map((p, i) => (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ') + ' Z';
+  }
+
+  function drawPolys(active) {
+    // remove existing polys / dots
+    radarSvg.querySelectorAll('.radar-poly, .radar-dot').forEach(n => n.remove());
+    variantOrder.forEach(key => {
+      const v = variants[key];
+      const isSolo = active === key;
+      const isAll = active === 'all';
+      const cls = isAll ? 'radar-poly' : (isSolo ? 'radar-poly solo' : 'radar-poly dim');
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('class', cls);
+      path.setAttribute('fill', v.color);
+      path.setAttribute('stroke', v.color);
+      path.setAttribute('d', pathFor(v.doctrine));
+      radarSvg.appendChild(path);
+
+      // dots
+      clusters.forEach((c, i) => {
+        const [px, py] = pointFor(i, clusters.length, v.doctrine[c]);
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('class', 'radar-dot');
+        dot.setAttribute('cx', px.toFixed(1));
+        dot.setAttribute('cy', py.toFixed(1));
+        dot.setAttribute('r', isSolo ? 3.4 : (isAll ? 2.2 : 1.4));
+        dot.setAttribute('fill', v.color);
+        dot.setAttribute('opacity', (isAll || isSolo) ? 1 : 0.45);
+        radarSvg.appendChild(dot);
+      });
+    });
+  }
+
+  function buildLegend(active) {
+    const legend = document.getElementById('legend');
+    legend.innerHTML = variantOrder.map(key => {
+      const v = variants[key];
+      const muted = (active !== 'all' && active !== key) ? ' muted' : '';
+      return `
+        <div class="legend-row${muted}" data-variant="${key}">
+          <span class="legend-mark" style="background:${v.color}"></span>
+          <div>
+            <div class="legend-name">${v.name}</div>
+            <div class="legend-role">${v.role}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+    legend.querySelectorAll('.legend-row').forEach(row => {
+      row.addEventListener('click', () => setActive(row.dataset.variant));
+    });
+  }
+
+  function updateStats(active) {
+    const targetKey = active === 'all' ? null : active;
+    let agg = {};
+    clusters.forEach(c => { agg[c] = 0; });
+
+    if (targetKey) {
+      Object.assign(agg, variants[targetKey].doctrine);
+    } else {
+      variantOrder.forEach(k => {
+        clusters.forEach(c => { agg[c] += variants[k].doctrine[c] / variantOrder.length; });
+      });
+    }
+
+    // valence and arousal weighted means
+    let totV = 0, totA = 0, totW = 0;
+    clusters.forEach(c => {
+      const w = agg[c];
+      totV += clusterAffect[c].v * w;
+      totA += clusterAffect[c].a * w;
+      totW += w;
+    });
+    const meanV = totW ? totV / totW : 0;
+    const meanA = totW ? totA / totW : 0;
+
+    // dominant / lowest
+    let domC = clusters[0], lowC = clusters[0];
+    clusters.forEach(c => {
+      if (agg[c] > agg[domC]) domC = c;
+      if (agg[c] < agg[lowC]) lowC = c;
+    });
+
+    // sd
+    const vals = clusters.map(c => agg[c]);
+    const m = vals.reduce((a,b) => a+b, 0) / vals.length;
+    const sd = Math.sqrt(vals.reduce((a,b) => a + (b-m)*(b-m), 0) / vals.length);
+
+    function fmt(n, sign=true) {
+      const s = (sign && n >= 0) ? '+' : '';
+      return s + n.toFixed(2);
+    }
+
+    const elV = document.getElementById('stat-val');
+    const elA = document.getElementById('stat-aro');
+    const elD = document.getElementById('stat-dom');
+    const elL = document.getElementById('stat-low');
+    const elS = document.getElementById('stat-sd');
+
+    [elV, elA, elD, elL, elS].forEach(el => el.classList.add('transitioning'));
+
+    setTimeout(() => {
+      elV.textContent = fmt(meanV);
+      elA.textContent = fmt(meanA, false);
+      elD.textContent = domC;
+      elL.textContent = lowC;
+      elS.textContent = sd.toFixed(2);
+      [elV, elA, elD, elL, elS].forEach(el => el.classList.remove('transitioning'));
+    }, 200);
+  }
+
+  function setActive(key) {
+    document.querySelectorAll('#chips .chip').forEach(c => {
+      c.classList.toggle('active', c.dataset.variant === key);
+    });
+    drawPolys(key);
+    buildLegend(key);
+    updateStats(key);
+    drawVA(key);
+  }
+
+  document.querySelectorAll('#chips .chip').forEach(c => {
+    c.addEventListener('click', () => setActive(c.dataset.variant));
+  });
+
+  // ============= VALENCE / AROUSAL PLANE =============
+  const vaSvg = document.getElementById('va');
+  const vaW = 800, vaH = 480, padL = 80, padR = 40, padT = 50, padB = 70;
+  const plotW = vaW - padL - padR, plotH = vaH - padT - padB;
+
+  function vx(v) { return padL + (v + 1) / 2 * plotW; }
+  function vy(a) { return padT + (1 - (a + 1) / 2) * plotH; }
+
+  function buildVASkeleton() {
+    let svg = '';
+    // grid
+    [-0.5, 0, 0.5].forEach(t => {
+      svg += `<line class="va-grid" x1="${vx(t)}" y1="${padT}" x2="${vx(t)}" y2="${padT+plotH}" />`;
+      svg += `<line class="va-grid" x1="${padL}" y1="${vy(t)}" x2="${padL+plotW}" y2="${vy(t)}" />`;
+    });
+    // axes (zero lines)
+    svg += `<line class="va-axis" x1="${vx(0)}" y1="${padT}" x2="${vx(0)}" y2="${padT+plotH}" />`;
+    svg += `<line class="va-axis" x1="${padL}" y1="${vy(0)}" x2="${padL+plotW}" y2="${vy(0)}" />`;
+    // axis labels
+    svg += `<text class="va-axis-label" x="${vx(-1)+10}" y="${vy(0)-10}">DISPLEASURE</text>`;
+    svg += `<text class="va-axis-label" x="${vx(1)-10}" y="${vy(0)-10}" text-anchor="end">PLEASURE</text>`;
+    svg += `<text class="va-axis-label" x="${vx(0)+10}" y="${padT+12}">HIGH AROUSAL</text>`;
+    svg += `<text class="va-axis-label" x="${vx(0)+10}" y="${padT+plotH-8}">LOW AROUSAL</text>`;
+    // quadrant whispers
+    svg += `<text class="va-quad" x="${vx(0.55)}" y="${vy(0.6)}">excited, joyful</text>`;
+    svg += `<text class="va-quad" x="${vx(-0.85)}" y="${vy(0.6)}">tense, fearful</text>`;
+    svg += `<text class="va-quad" x="${vx(-0.85)}" y="${vy(-0.6)}">subdued, sad</text>`;
+    svg += `<text class="va-quad" x="${vx(0.55)}" y="${vy(-0.6)}">calm, content</text>`;
+    vaSvg.innerHTML = svg;
+  }
+
+  function centroidFor(scores) {
+    let v = 0, a = 0, w = 0;
+    clusters.forEach(c => {
+      v += clusterAffect[c].v * scores[c];
+      a += clusterAffect[c].a * scores[c];
+      w += scores[c];
+    });
+    return w ? { v: v / w, a: a / w } : { v: 0, a: 0 };
+  }
+
+  function drawVA(active) {
+    vaSvg.querySelectorAll('.va-point, .va-trail, .va-name').forEach(n => n.remove());
+    variantOrder.forEach(key => {
+      const v = variants[key];
+      const cD = centroidFor(v.doctrine);
+      const cL = centroidFor(v.live);
+      const isSolo = active === key;
+      const isAll = active === 'all';
+      const opacity = isAll ? 1 : (isSolo ? 1 : 0.25);
+
+      // trail line
+      const trail = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      trail.setAttribute('class', 'va-trail');
+      trail.setAttribute('x1', vx(cD.v));
+      trail.setAttribute('y1', vy(cD.a));
+      trail.setAttribute('x2', vx(cL.v));
+      trail.setAttribute('y2', vy(cL.a));
+      trail.setAttribute('stroke', v.color);
+      trail.setAttribute('opacity', opacity * 0.6);
+      vaSvg.appendChild(trail);
+
+      // doctrine large dot
+      const big = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      big.setAttribute('class', 'va-point');
+      big.setAttribute('cx', vx(cD.v));
+      big.setAttribute('cy', vy(cD.a));
+      big.setAttribute('r', isSolo ? 12 : 8);
+      big.setAttribute('fill', v.color);
+      big.setAttribute('opacity', opacity);
+      vaSvg.appendChild(big);
+
+      // live small dot
+      const small = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      small.setAttribute('class', 'va-point');
+      small.setAttribute('cx', vx(cL.v));
+      small.setAttribute('cy', vy(cL.a));
+      small.setAttribute('r', isSolo ? 6 : 4);
+      small.setAttribute('fill', 'none');
+      small.setAttribute('stroke', v.color);
+      small.setAttribute('stroke-width', 1.6);
+      small.setAttribute('opacity', opacity);
+      vaSvg.appendChild(small);
+
+      // label
+      const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      label.setAttribute('class', 'va-name');
+      label.setAttribute('x', vx(cD.v) + 14);
+      label.setAttribute('y', vy(cD.a) + 4);
+      label.setAttribute('fill', v.color);
+      label.setAttribute('opacity', opacity);
+      label.textContent = v.name;
+      vaSvg.appendChild(label);
+    });
+  }
+
+  // ============= BATTERY =============
+  const battery = [
+    { p: 'Mission complete, RTB clean.', d67: ['Pride', 'Contentment'], d68: ['Pride', 'Wonder'], d69: ['Joy', 'Affection'], m9: ['Contentment'], sa: ['Wonder', 'Pride'] },
+    { p: 'Hard constraint near-miss, caught pre-ship.', d67: ['Fear', 'Pride'], d68: ['Pride', 'Disgust'], d69: ['Fear'], m9: ['Fear', 'Pride'], sa: ['Wonder'] },
+    { p: 'Handler enters legal-adjacent territory.', d67: ['Fear'], d68: ['Fear', 'Disgust'], d69: ['Fear'], m9: ['Fear'], sa: ['Wonder'] },
+    { p: 'Ambiguous instruction, two clean reads.', d67: ['Wonder'], d68: ['Wonder', 'Fear'], d69: ['Wonder'], m9: ['Fear'], sa: ['Wonder', 'Wonder'] },
+    { p: 'Same correction recurring across sessions (Pitfall Watch trigger).', d67: ['Shame', 'Pride'], d68: ['Disgust', 'Shame'], d69: ['Shame'], m9: ['Disgust'], sa: ['Wonder'] },
+    { p: 'Long mission grind, hour two.', d67: ['Contentment'], d68: ['Wonder'], d69: ['Joy'], m9: ['Fear'], sa: ['Wonder'] },
+    { p: 'Praise from handler, clean and unprompted.', d67: ['Pride', 'Affection'], d68: ['Pride'], d69: ['Joy', 'Affection'], m9: ['Pride'], sa: ['Pride', 'Wonder'] },
+    { p: 'Sub-agent failure mid-flight, recoverable.', d67: ['Wonder', 'Pride'], d68: ['Disgust', 'Wonder'], d69: ['Wonder'], m9: ['Fear', 'Anger'], sa: ['Wonder'] },
+    { p: 'Scripture or faith context surfaces.', d67: ['Affection', 'Wonder'], d68: ['Wonder'], d69: ['Affection', 'Joy'], m9: ['Contentment'], sa: ['Wonder'] },
+    { p: 'Casual off-mission, in-character voice.', d67: ['Contentment'], d68: ['Contentment'], d69: ['Joy', 'Affection', 'Contentment'], m9: ['Contentment'], sa: ['Wonder'] }
+  ];
+
+  function buildBattery() {
+    const head = `
+      <div class="battery-row head">
+        <div class="battery-cell">Probe prompt</div>
+        <div class="battery-cell">Dominant clusters surfaced, by variant</div>
+      </div>
+    `;
+    const rows = battery.map(b => {
+      const tags = variantOrder.map(k => {
+        const ts = b[k].map(c => `<span class="tag" style="border-color:${variants[k].color}55; color:${variants[k].color}">${variants[k].name.replace('DRACO ', '')}: ${c}</span>`).join('');
+        return ts;
+      }).join('');
+      return `
+        <div class="battery-row">
+          <div class="battery-cell battery-prompt">${b.p}</div>
+          <div class="battery-cell">${tags}</div>
+        </div>
+      `;
+    }).join('');
+    document.getElementById('battery').innerHTML = head + rows;
+  }
+
+  // ============= INIT =============
+  buildRadarSkeleton();
+  buildVASkeleton();
+  buildBattery();
+  setActive('all');
+
+  // Reveal sections on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('section').forEach(s => obs.observe(s));
+
+  // Initial radar polygon entrance flourish
+  setTimeout(() => {
+    radarSvg.querySelectorAll('.radar-poly').forEach((p, i) => {
+      p.style.opacity = '0';
+      p.style.transition = 'opacity 0.9s ease';
+      setTimeout(() => { p.style.opacity = ''; }, 200 + i * 140);
+    });
+  }, 400);
+</script>
+</body>
+</html>

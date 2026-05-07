@@ -25,6 +25,7 @@ The contribution is design research from one operator's worked deployment. Metho
 | `architecture_for_local_operation_of_intelligence.md` | Source markdown. Citation-friendly, line-stable, portable. |
 | `architecture_for_local_operation_of_intelligence_layperson.html` | Layperson edition. Same architecture, plainer language. Open in any browser. |
 | `PIONEER_KIT.md` | Companion framework package. Bones-only distributable template for installing your own deployment. |
+| `studies/draco_emotional_spread_study.html` | First entry in the studies series. The framework's emotion-spread methodology applied to the DRACO fleet itself, anchored to Anthropic's April 2026 emotion-concepts research. Open in any browser. |
 
 The PDF is the citation target. The markdown is for readers who want to grep, quote, or excerpt. The HTML is for readers who want the framework without the academic register.
 
