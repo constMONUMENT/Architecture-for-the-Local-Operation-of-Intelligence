@@ -9,27 +9,46 @@
 
 ---
 
-## What this is
+## Welcome
 
-Most uses of AI today are containers. A user asks a question. The system answers. The conversation ends, and the next conversation starts from nothing. This paper proposes a different posture: a framework for building, configuring, and distributing durable AI operating doctrine at the individual operator level.
+This repository holds a white paper and an installation template for a framework called ALOI: the Architecture for the Local Operation of Intelligence. It is about how to set up an AI assistant so the setup is durable, fits your life, and travels across vendors.
 
-The framework is structured in three layers. *Bones* are universal mechanisms shared by every install. *Flavor* is operator-specific configuration. *Presence* is configurable depth of relational tone. The architecture runs on a single ethical commitment, system-pointed self-audit rather than user-pointed observation, and on a distribution mechanism that lets the architecture travel to other operators with their own contexts.
+The paper itself is academic. You do not have to start there. There are several doors into the same room.
 
-The contribution is design research from one operator's worked deployment. Methodology and limitations are stated explicitly throughout the paper.
+## Find your starting point
+
+**No background in AI, just curious.** Open [`START_HERE.md`](START_HERE.md). Five minute read.
+
+**Worried about cheating, misuse, privacy, or what the AI is allowed to do.** Open [`FAQ.md`](FAQ.md). Plain answers to common questions.
+
+**Want the framework in plain language, without the academic register.** Open [`architecture_for_local_operation_of_intelligence_layperson.html`](architecture_for_local_operation_of_intelligence_layperson.html) in any browser. About a twenty minute read.
+
+**Want the full paper.** Open [`architecture_for_local_operation_of_intelligence.pdf`](architecture_for_local_operation_of_intelligence.pdf). The canonical version.
+
+**Want to install the framework for yourself.** Open [`PIONEER_KIT.md`](PIONEER_KIT.md). Read at least the layperson HTML first.
+
+**Want to cite or quote precisely.** Use [`architecture_for_local_operation_of_intelligence.md`](architecture_for_local_operation_of_intelligence.md) (the source markdown) together with the citation block below.
+
+**Want to see applied research.** Open the [`studies/`](studies/) folder.
+
+**Want to look up a term you saw.** Open [`GLOSSARY.md`](GLOSSARY.md).
 
 ## What is in this repository
 
 | File | Purpose |
 | --- | --- |
-| `architecture_for_local_operation_of_intelligence.pdf` | Canonical paper. Read this first. |
-| `architecture_for_local_operation_of_intelligence.md` | Source markdown. Citation-friendly, line-stable, portable. |
-| `architecture_for_local_operation_of_intelligence_layperson.html` | Layperson edition. Same architecture, plainer language. Open in any browser. |
-| `PIONEER_KIT.md` | Companion framework package. Bones-only distributable template for installing your own deployment. |
-| `studies/draco_emotional_spread_study.html` | First entry in the studies series. The framework's emotion-spread methodology applied to the DRACO fleet itself, anchored to Anthropic's April 2026 emotion-concepts research. Open in any browser. |
+| `START_HERE.md` | Five minute introduction. Plain language. Best first stop for newcomers. |
+| `FAQ.md` | Common questions and concerns about the paper and the framework. |
+| `GLOSSARY.md` | Definitions of the framework's working vocabulary. |
+| `architecture_for_local_operation_of_intelligence.pdf` | Canonical white paper. The citation target. |
+| `architecture_for_local_operation_of_intelligence.md` | Source markdown of the paper. Citation friendly, line stable, portable. |
+| `architecture_for_local_operation_of_intelligence_layperson.html` | Layperson edition of the paper. Same architecture, plainer language. Open in any browser. |
+| `PIONEER_KIT.md` | Companion framework package. Bones only distributable template for installing your own deployment. |
+| `studies/draco_emotional_spread_study.html` | First entry in the studies series. The framework's emotion spread methodology applied to the DRACO fleet itself, anchored to Anthropic's April 2026 emotion concepts research. Open in any browser. |
 
-The PDF is the citation target. The markdown is for readers who want to grep, quote, or excerpt. The HTML is for readers who want the framework without the academic register.
+The PDF is the citation target. The markdown is for readers who want to grep, quote, or excerpt. The HTML is for readers who want the framework without the academic register. The top level accessibility files (`START_HERE.md`, `FAQ.md`, `GLOSSARY.md`) are doors into the work, not replacements for it.
 
-The Pioneer Kit (`PIONEER_KIT.md`) is the cargo-manifest version of the framework: universal mechanisms only, no operator-specific content. Read the paper before installing.
+The Pioneer Kit (`PIONEER_KIT.md`) is the cargo manifest version of the framework: universal mechanisms only, no operator-specific content. Read the paper before installing.
 
 ## How to cite
 
