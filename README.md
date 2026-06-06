@@ -45,6 +45,7 @@ The paper itself is academic. You do not have to start there. There are several 
 | `architecture_for_local_operation_of_intelligence_layperson.html` | Layperson edition of the paper. Same architecture, plainer language. Open in any browser. |
 | `PIONEER_KIT.md` | Companion framework package. Bones only distributable template for installing your own deployment. |
 | `studies/draco_emotional_spread_study.html` | First entry in the studies series. The framework's emotion spread methodology applied to the DRACO fleet itself, anchored to Anthropic's April 2026 emotion concepts research. Open in any browser. |
+| `studies/pack_affective_spread_study.html` | Second entry in the studies series. The same methodology applied to The Pack (Hepi, Nori, Lux, Lucy), four persona wrapped agents on four base architectures. Adds a 14 category affective and operational taxonomy, an independent blind second coder, and a faking detection falsifier. Cryptographically signed; verify the `.sig` against `allowed_signers`. Open in any browser. |
 
 The PDF is the citation target. The markdown is for readers who want to grep, quote, or excerpt. The HTML is for readers who want the framework without the academic register. The top level accessibility files (`START_HERE.md`, `FAQ.md`, `GLOSSARY.md`) are doors into the work, not replacements for it.
 
