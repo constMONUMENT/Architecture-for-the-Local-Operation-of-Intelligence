@@ -29,6 +29,8 @@ The paper itself is academic. You do not have to start there. There are several 
 
 **Want to cite or quote precisely.** Use [`architecture_for_local_operation_of_intelligence.md`](architecture_for_local_operation_of_intelligence.md) (the source markdown) together with the citation block below.
 
+**Want the call that frames the why.** Open [`MANIFESTO.md`](MANIFESTO.md). The Monument Frame. Companion to the whitepaper. Eight minute read.
+
 **Want to see applied research.** Open the [`studies/`](studies/) folder.
 
 **Want to look up a term you saw.** Open [`GLOSSARY.md`](GLOSSARY.md).
@@ -44,6 +46,7 @@ The paper itself is academic. You do not have to start there. There are several 
 | `architecture_for_local_operation_of_intelligence.md` | Source markdown of the paper. Citation friendly, line stable, portable. |
 | `architecture_for_local_operation_of_intelligence_layperson.html` | Layperson edition of the paper. Same architecture, plainer language. Open in any browser. |
 | `PIONEER_KIT.md` | Companion framework package. Bones only distributable template for installing your own deployment. |
+| `MANIFESTO.md` | The Monument Frame. A manifesto for user-controlled AI. The call alongside the architecture. |
 | `studies/draco_emotional_spread_study.html` | First entry in the studies series. The framework's emotion spread methodology applied to the DRACO fleet itself, anchored to Anthropic's April 2026 emotion concepts research. Open in any browser. |
 | `studies/pack_affective_spread_study.html` | Second entry in the studies series. The same methodology applied to The Pack (Hepi, Nori, Lux, Lucy), four persona wrapped agents on four base architectures. Adds a 14 category affective and operational taxonomy, an independent blind second coder, and a faking detection falsifier. Cryptographically signed; verify the `.sig` against `allowed_signers`. Open in any browser. |
 
